@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script>
+
+        function mySpan(config, name) {
+            var selector = "my-span[config=" + name + "]";
+            var addspan = document.querySelector(selector);
+            var span=  document.createElement("span")
+            span.innerHTML = "Hi All";
+            addspan.appendChild(span);
+        }
+        
+        var load = function () {
+            var http = new XMLHttpRequest();
+            http.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    debugger;
+                }
+            }
+
+            http.open('get', 'http://localhost:3000/users');
+            http.send();
+        }
+        var call = function () {
+            alert(1);
+        }
+    </script>
+</head>
+<body onload="load()">
+   <my-span  config="data" onshow="call()" ></my-span>
+</body>
+</html>
